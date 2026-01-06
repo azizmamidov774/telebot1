@@ -8,14 +8,13 @@ import psycopg2
 load_dotenv()
 token_api = os.getenv("TOKEN_KEY")
 
-
 conn = psycopg2.connect(
-dbname=os.getenv("DB_NAME"),
-host=os.getenv("DB_HOST"),
-user=os.getenv("DB_USER"),
-password=os.getenv("DB_PASSWORD"),
-port=os.getenv("DB_PORT")
-
+    dbname="telebot12_7217"
+    user="telebot12_7217"
+    password="postgres://telebot12_7217:sCq5QyGp3_Ky49L1Zd2io_IBXWY7BqvjYGVm5lBM1749Un4m_j60o2eNVJ0lGeky@telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com:34742/telebot12_7217?sslmode=prefer"
+    host="telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com"
+    port="34742"
+    sslmode="prefer" 
 )
 
 conn.autocommit = True
