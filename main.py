@@ -2,32 +2,31 @@ import os
 from dotenv import load_dotenv
 import telebot
 from telebot import types 
-import psycopg2
 
 
 load_dotenv()
 token_api = os.getenv("TOKEN_KEY")
 
-conn = psycopg2.connect(
-    dbname="telebot12_7217"
-    user="telebot12_7217"
-    password="postgres://telebot12_7217:sCq5QyGp3_Ky49L1Zd2io_IBXWY7BqvjYGVm5lBM1749Un4m_j60o2eNVJ0lGeky@telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com:34742/telebot12_7217?sslmode=prefer"
-    host="telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com"
-    port="34742"
-    sslmode="prefer" 
-)
+# conn = psycopg2.connect(
+#     dbname="telebot12_7217"
+#     user="telebot12_7217"
+#     password="postgres://telebot12_7217:sCq5QyGp3_Ky49L1Zd2io_IBXWY7BqvjYGVm5lBM1749Un4m_j60o2eNVJ0lGeky@telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com:34742/telebot12_7217?sslmode=prefer"
+#     host="telebot12-7217.postgresql.c.osc-fr1.scalingo-dbs.com"
+#     port="34742"
+#     sslmode="prefer" 
+# )
 
-conn.autocommit = True
-cursor =conn.cursor()
-cursor.execute(
-    """
-        CREATE TABLE IF NOT EXISTS tele_users(
-            ID SERIAL PRIMARY KEY,
-            Name varchar(30),
-            Age integer
-        )
-    """
-)
+# conn.autocommit = True
+# cursor =conn.cursor()
+# cursor.execute(
+#     """
+#         CREATE TABLE IF NOT EXISTS tele_users(
+#             ID SERIAL PRIMARY KEY,
+#             Name varchar(30),
+#             Age integer
+#         )
+#     """
+# )
 
 
 
@@ -84,13 +83,13 @@ def call_back(call):
     if call.data == "yes":
             user_name = name + surname
             # код добавления в базу
-    cursor.execute(
-        """
-                    INSERT INTO tele_users(name, age)
-                    VALUES(%s, %s)
-""",
-            (user_name, age),
-)
+#     cursor.execute(
+#         """
+#                     INSERT INTO tele_users(name, age)
+#                     VALUES(%s, %s)
+# """,
+#             (user_name, age),
+
 
 
     bot.send_message(call.message.chat.id, text="вы успешно зарегистрированы")
